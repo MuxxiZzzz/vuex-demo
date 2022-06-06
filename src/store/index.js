@@ -1,12 +1,23 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import cart from './modules/cart'
+import products from './modules/products'
+// import axios from 'axios'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {},
-  getters: {},
+  state: {
+    userInfo: {
+      email: 'xxxxxx@qq.com',
+    },
+    list: [],
+  },
   mutations: {},
   actions: {},
-  modules: {},
-});
+  modules: {
+    cart,
+    products,
+  },
+  getters: {},
+})

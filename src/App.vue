@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>购物车实例</h1>
+    <p>账户：{{ userInfo.email }}</p>
+    <hr />
+    <ProductList />
+    <hr />
+    <ShoppingCart />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import ProductList from './components/ProductList.vue'
+import ShoppingCart from './components/ShoppingCart.vue'
+import { mapState } from 'vuex'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    HelloWorld,
+    ProductList,
+    ShoppingCart,
   },
-};
+  created() {
+    this.$store.dispatch('products/getInitData')
+  },
+  computed: {
+    ...mapState(['userInfo']),
+  },
+}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+p {
+  margin: 0;
 }
 </style>
